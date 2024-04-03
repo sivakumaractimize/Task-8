@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" integrity="sha512-8RxmFOVaKQe/xtg6lbscU9DU0IRhURWEuiI0tXevv+lXbAHfkpamD4VKFQRto9WgfOJDwOZ74c/s9Yesv3VvIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Form validation</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+    <style>
+
+        .error{
+            color: red;
+        }
+       
+    </style>
+  </head>
+  <body >
+
+  <!-- Example Code -->
+  <div class="container  col-md-6" id="main" >
+
+    <h1 class="text-center">Create Your Account</h1>
+
+
+ 
+    <form class="col g-2 " id="form">
+      <div class="col-md-8  mx-auto">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" onchange="validForm()"/>
+        <p class="error" id="nameErr"></p>
+
+
+      </div>
+      <div class="col-md-8 mx-auto">
+        <label class="form-label">Date Of Birth</label>
+        <input type="date" class="form-control"  id="dob" onchange="validForm()"/>
+        <p class="error" id="dobErr"></p>
+      </div>
+      <div class="col-md-8 mx-auto">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" onchange="validForm()"/>
+        <p class="error" id="emailErr"></p>
+      </div>
+      <div class="col-md-8  mx-auto">
+        <label for="inputPassword4" class="form-label">Mobile</label>
+        <input type="number" class="form-control" id="mobile" onchange="validForm()"/>
+        <p class="error" id="mobErr"></p>
+      </div>
+
+      <div class="col-md-8 mx-auto">
+        <label for="inputPassword4" class="form-label">Gender</label>
+        <div>
+          <div class="form-check">
+            <input
+              type="radio"
+              name="radio-stacked"
+              id="male"
+              onchange="validForm()"
+            />
+            <label class="form-check-label" for="validationFormCheck2"
+              >Male</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              type="radio"
+              name="radio-stacked"
+              id="female";
+              onchange="validForm()"
+            />
+            <label class="form-check-label" for="validationFormCheck2"
+              >Female</label
+            >
+          </div>
+        </div>
+        <p class="error" id="genErr"></p>
+      </div>
+<!-- 
+      <div class="col-md-8 mx-auto">
+        <label for="inputCity" class="form-label">City</label>
+        <input type="text" class="form-control" id="city" />
+        <p class="error" id="cityErr"></p>
+      </div> -->
+      <div class="col-md-8 mx-auto">
+        <label for="inputState" class="form-label">Country</label>
+        <select id="inputCountry" class="form-select" onchange="validForm()">
+          <option value="" >Choose...</option>
+          <option value="india">India</option>
+          <option value="china">china</option>
+          <option value="usa">USA</option>
+          <option value="japan" >JAPAN</option>
+          <option value="pakistan" >PAKISTHAN</option>
+          <option value="narway" >NARWAY</option>
+          <option >SOUDI</option>
+        </select>
+        <p class="error" id="countryErr"></p>
+      </div>
+      <div class="col-md-8 mx-auto">
+        <label for="inputZip" class="form-label">Pincode</label>
+        <input type="number" class="form-control" id="zip" onchange="validForm()"/>
+        <p class="error" id="zipErr"></p>
+      </div>
+            <!-- password  -->
+            <div class="col-md-8 mx-auto">
+              <label for="inputZip" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" onchange="validForm()"/>
+              <p class="error" id="pssErr"></p>
+              <input type="checkbox" onclick="myFunction()">Show Password
+            </div>
+
+            <div class="col-md-8 mx-auto pt-2">
+              <label for="inputZip" class="form-label"> Conform password</label>
+              <input type="password" class="form-control" id="password2" onchange="validForm()"/>
+              <p class="error" id="pserr2"></p>
+              <input type="checkbox"  onclick="myFunction1()">Show Password
+            </div>
+
+
+            
+
+     
+
+
+      <div class=" col-md-8 mx-auto mt-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="check" onchange="validForm()"/>
+          <label class="form-check-label" for="gridCheck"> Agree Terms and conditions </label>
+          <p class="error" id="checkErr"></p>
+        </div>
+      </div>
+         <!-- Button trigger modal -->
+         <div class=" col-md-8   mx-auto d-flex justify-content-between "> <!-- Centering the button -->
+          <button type="button" id="btn"  onclick="validForm()"  class="btn btn-success col-md-3  mb-4 ">
+            Submit
+          </button>
+          <button type="button"   onclick="formReset()" class="btn btn-danger col-md-3  mb-4 ms-3  ms-4">
+            Reset
+          </button>
+        </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Thank you...</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Details submit successfully....!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    </form>
+
+</div>
+<script src="./assets/script/script.js"></script>
+    
+
+
+
+
+ </body>
